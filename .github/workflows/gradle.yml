@@ -1,4 +1,4 @@
-name: Java CI with Gradle and Docker
+name: Java CI with Maven and Docker
 
 on:
   push:
@@ -21,8 +21,8 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
 
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: Build with Maven
+      run: mvn clean install
 
     - name: Build Docker image
       run: |
