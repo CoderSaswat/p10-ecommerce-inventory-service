@@ -22,7 +22,7 @@ public class ProductServiceClientImpl implements ProductServiceClient {
 
 
     public void createProduct(ProductDto productDto) {
-        String url = String.format("%s/products", productServiceBaseUrl); // Assuming "/products" is the endpoint for creating a product
+        String url = String.format("%s/products", productServiceBaseUrl);
         ParameterizedTypeReference<ProductDto> responseType = new ParameterizedTypeReference<>() {};
         HttpEntity<ProductDto> requestEntity = new HttpEntity<>(productDto);
         restTemplate.exchange(
