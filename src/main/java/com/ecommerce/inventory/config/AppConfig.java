@@ -1,6 +1,6 @@
 package com.ecommerce.inventory.config;
 
-import com.ecommerce.inventory.config.mapper.PatchMapper;
+import com.ecommerce.inventory.mapper.PatchMapper;
 import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;

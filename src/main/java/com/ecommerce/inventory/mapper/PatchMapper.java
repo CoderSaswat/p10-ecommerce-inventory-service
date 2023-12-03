@@ -1,4 +1,4 @@
-package com.ecommerce.inventory.config.mapper;
+package com.ecommerce.inventory.mapper;
 
 import org.modelmapper.ModelMapper;
 

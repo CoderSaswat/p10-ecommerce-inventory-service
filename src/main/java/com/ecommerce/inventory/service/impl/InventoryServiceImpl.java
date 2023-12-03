@@ -1,6 +1,6 @@
 package com.ecommerce.inventory.service.impl;
 
-import com.ecommerce.inventory.config.mapper.PatchMapper;
+import com.ecommerce.inventory.mapper.PatchMapper;
 import com.ecommerce.inventory.dto.InventoryDto;
 import com.ecommerce.inventory.dto.ProductDto;
 import com.ecommerce.inventory.enums.ResponseCodes;
@@ -71,8 +71,6 @@ public class InventoryServiceImpl implements InventoryService {
         productDto.setInventoryId(savedInventory.getId());
         return productDto;
     }
-
-    // Helper methods for mapping and validation
 
     private Inventory getInventoryById(UUID inventoryId) {
         return inventoryRepository.findById(inventoryId)
