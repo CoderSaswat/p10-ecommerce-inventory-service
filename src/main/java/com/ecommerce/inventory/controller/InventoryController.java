@@ -1,6 +1,7 @@
 package com.ecommerce.inventory.controller;
 
 import com.ecommerce.inventory.dto.InventoryDto;
+import com.ecommerce.inventory.dto.ProductAvailabilityDto;
 import com.ecommerce.inventory.dto.ProductDto;
 import com.ecommerce.inventory.service.InventoryService;
 import lombok.RequiredArgsConstructor;
@@ -45,6 +46,11 @@ public class InventoryController {
     public void deleteInventoryProduct(@PathVariable UUID inventoryId) {
         inventoryService.deleteInventoryProduct(inventoryId);
     }
+    @PostMapping("/update-product-availability")
+    public void updateProductAvailability(@RequestBody ProductAvailabilityDto productAvailabilityDto) {
+        inventoryService.updateProductAvailability(productAvailabilityDto);
+    }
+
 
 
 }

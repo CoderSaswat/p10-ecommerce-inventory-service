@@ -1,5 +1,7 @@
 package com.ecommerce.inventory.service.impl;
 
+import com.ecommerce.inventory.dto.ProductAvailabilityDto;
+import com.ecommerce.inventory.exception.BusinessException;
 import com.ecommerce.inventory.mapper.PatchMapper;
 import com.ecommerce.inventory.dto.InventoryDto;
 import com.ecommerce.inventory.dto.ProductDto;
@@ -39,6 +41,19 @@ public class InventoryServiceImpl implements InventoryService {
         return inventoryList.stream()
                 .map(this::mapToInventoryDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void updateProductAvailability(ProductAvailabilityDto productAvailabilityDto) {
+        log.info("Updating availability quantity for product {}", productAvailabilityDto.getProductName());
+        Inventory inventory = inventoryRepository.findByProductName(productAvailabilityDto.getProductName());
+        log.info("Updating availability quantity for product {}", inventory.getProductName());
+        if(inventory.getAvailableQuantity() - productAvailabilityDto.getAmountSold() < 0){
+            throw new BusinessException("can't place order, since order quantity is more than availability quantity");
+        }
+        Integer remainingQuantity=inventory.getAvailableQuantity() - productAvailabilityDto.getAmountSold();
+        inventory.setAvailableQuantity(remainingQuantity);
+        inventoryRepository.save(inventory);
     }
 
     @Override

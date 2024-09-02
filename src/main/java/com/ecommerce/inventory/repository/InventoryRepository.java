@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface InventoryRepository extends MongoRepository<Inventory, UUID> {
+    Inventory findByProductName(String productName);
 }

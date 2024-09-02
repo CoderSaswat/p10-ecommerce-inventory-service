@@ -2,6 +2,7 @@ package com.ecommerce.inventory.service;
 
 
 import com.ecommerce.inventory.dto.InventoryDto;
+import com.ecommerce.inventory.dto.ProductAvailabilityDto;
 import com.ecommerce.inventory.dto.ProductDto;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface InventoryService {
     ProductDto createInventoryProduct(InventoryDto inventoryDto);
     void deleteInventoryProduct(UUID inventoryId);
     List<InventoryDto> getAllInventoryProducts();
-
+    void updateProductAvailability(ProductAvailabilityDto productAvailabilityDto);
 }
