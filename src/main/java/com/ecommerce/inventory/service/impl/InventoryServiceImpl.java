@@ -37,6 +37,7 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public List<InventoryDto> getAllInventoryProducts() {
+        log.info("getting all inventory products");
         List<Inventory> inventoryList = inventoryRepository.findAll();
         return inventoryList.stream()
                 .map(this::mapToInventoryDto)
