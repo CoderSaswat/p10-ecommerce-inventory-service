@@ -74,6 +74,10 @@ public class InventoryServiceImpl implements InventoryService {
     public ProductDto createInventoryProduct(InventoryDto inventoryDto) {
         Inventory newInventory = mapToInventoryEntity(inventoryDto);
         newInventory.setId(UUID.randomUUID());
+        Inventory inventory = inventoryRepository.findByProductName(inventoryDto.getProductName());
+        if(inventory != null){
+            throw new BusinessException("product already present and added into inventory");
+        }
         Inventory savedInventory = inventoryRepository.save(newInventory);
         ProductDto productDto = generateProductDto(inventoryDto, savedInventory);
         productServiceClient.createProduct(productDto);
